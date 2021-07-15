@@ -21,6 +21,9 @@ My second milestone was displaying the temperature of my city on the OLED screen
 |VCC → 3V3|
 |SCL → D22|
 |SDA → D21
+
+[![Connection Ports](file:///Users/audreylee/Pictures/Photos%20Library.photoslibrary/resources/derivatives/A/AAA62041-0131-4E8D-A0A9-EE0ACCE58781_1_105_c.jpeg)]
+
 Now that all the correct pins are connected to one another, I needed to install the required libraries. I downloaded Adafruit SSD1306 and Adafruit GFX, which will control the OLED display through the ESP32. However, Adafruit SSD1306 was not the correct library needed, so instead, I downloaded a different library, the Adafruit SH110X. This library allowed me to display both words and images onto the OLED screen. I then began to add to my code from my last milestone. I made sure to include the libraries that will be used throughout this code 
 
 [![Third Milestone](https://res.cloudinary.com/marcomontalbano/image/upload/v1612574014/video_to_markdown/images/youtube--y3VAmNlER5Y-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=y3VAmNlER5Y&feature=emb_logo "Second Milestone"){:target="_blank" rel="noopener"}
