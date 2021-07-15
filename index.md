@@ -15,8 +15,8 @@ My final milestone is the increased reliability and accuracy of my robot. I amel
 # Second Milestone
 My second milestone was displaying the temperature of my city on the OLED screen. An OLED screen is a piece of technology that utilizes LEDs, where organic molecules produce light. The model that I am using has four pins and communicates with microcontrollers that use an I2C communication protocol. To continue off of milestone #1, I had to connect the OLED screen to the ESP32. To join the OLED screen to the ESP32, I need to solder in the header pins into the OLED Screen. By using a solder machine, I was able to place these pins into the correct holes permanently. I then connected female to female wires to the correct ports of the OLED screen and ESP32. 
 (Inset Image of connection)
-|**(OLED display)**|**(ESP32)**|
-|:--:|:--:|
+|**(OLED display)→(ESP32)**|
+|:--:|
 |GND → GND|
 |VCC → 3V3|
 |SCL → D22|
