@@ -32,17 +32,18 @@ Now that all the correct pins are connected, I needed to install the required li
 
 ```arduino
 #include <SPI.h>
+#include <SPI.h>
 #include <ArduinoJson.h>
 #include <WiFi.h>
 #include <HTTPClient.h>
 #include <Adafruit_GFX.h>
-#include <Adafruit_SH110X.h>
+#include <Adafruit_SSD1306.h>
 ```
 
 I made sure to include the libraries that will be used throughout this code in the very beginning.
 
 ```arduino
-Adafruit_SH1106G display = Adafruit_SH1106G(128, 64, &Wire);
+Adafruit_SSD1306 display(128, 64, &Wire, 4);
 ```
 
 The line of code that says the library's name before the function display is used to call which dimensions of this display that I would be using. In this case, I want to have the ability to use the entire screen. So by having the dimensions of (128, 64), this grants me that access. Below the deserialization code, you can see code that is meant to print out the temperature onto the display. 
@@ -50,7 +51,7 @@ The line of code that says the library's name before the function display is use
 ```arduino
 Serial.println(temp);
 display.setTextSize(1);
-display.setTextColor(SH110X_WHITE);
+display.setTextColor(SSD1306_WHITE);
 display.setCursor(0, 0);
 display.println(temp);
 display.display();
