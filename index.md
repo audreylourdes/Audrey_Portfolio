@@ -41,11 +41,20 @@ Now that all the correct pins are connected, I needed to install the required li
 
 I made sure to include the libraries that will be used throughout this code in the very beginning.
 
-<img width="441" alt="Screen Shot 2021-07-16 at 12 17 31 PM" src="https://user-images.githubusercontent.com/43714174/125998729-2de42ae0-a7d8-45f5-b181-012bcd6e3e6c.png">
+```arduino
+Adafruit_SH1106G display = Adafruit_SH1106G(128, 64, &Wire);
+```
 
 The line of code that says the library's name before the function display is used to call which dimensions of this display that I would be using. In this case, I want to have the ability to use the entire screen. So by having the dimensions of (128, 64), this grants me that access. Below the deserialization code, you can see code that is meant to print out the temperature onto the display. 
 
-<img width="255" alt="Screen Shot 2021-07-16 at 12 19 32 PM" src="https://user-images.githubusercontent.com/43714174/125998343-e63b9027-1e11-43c0-9199-2f8c8c013520.png">
+```arduino
+Serial.println(temp);
+display.setTextSize(1);
+display.setTextColor(SH110X_WHITE);
+display.setCursor(0, 0);
+display.println(temp);
+display.display();
+```
 
 The first line of this section is dedicated to printing the temperature data to the serial port. The following two lines are there to set the color and size of what will be displayed. The following line then sets the location of where the data will be printed. Finally, the display function then calls for the temperature to be displayed on the screen. Compared to the last milestone, this milestone I encountered more difficult challenges. First up is that my OLED display was not functioning correctly and appeared to be broken. Another challenge was that I could not find a working library for this specific display. The final libraries that I ended up using were the Adafruit SH110X and Adafruit GFX.
 
