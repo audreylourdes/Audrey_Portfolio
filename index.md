@@ -24,7 +24,15 @@ My second milestone was displaying the temperature of my city on the OLED screen
 
 ![Connection Ports](file:///Users/audreylee/Pictures/Photos%20Library.photoslibrary/resources/derivatives/A/AAA62041-0131-4E8D-A0A9-EE0ACCE58781_1_105_c.jpeg)
 
-Now that all the correct pins are connected, I needed to install the required libraries. I then downloaded Adafruit SSD1306 and Adafruit GFX, which will control the OLED display through the ESP32. However, Adafruit SSD1306 was not the correct library needed, so instead, I downloaded a different library, the Adafruit SH110X. This library allowed me to display both words and images onto the OLED screen. I then began to add to my code from my last milestone. I made sure to include the libraries that will be used throughout this code in the very beginning. The line of code that says the library's name before the function display is used to call which dimensions of this display that I would be using. In this case, I want to have the ability to use the entire screen. So by having the dimensions of (128, 64), this grants me that access. Below the deserialization code, you can see code that is meant to print out the temperature onto the display. 
+Now that all the correct pins are connected, I needed to install the required libraries. I then downloaded Adafruit SSD1306 and Adafruit GFX, which will control the OLED display through the ESP32. However, Adafruit SSD1306 was not the correct library needed, so instead, I downloaded a different library, the Adafruit SH110X. This library allowed me to display both words and images onto the OLED screen. I then began to add to my code from my last milestone. 
+
+<img width="210" alt="Screen Shot 2021-07-16 at 12 17 38 PM" src="https://user-images.githubusercontent.com/43714174/125998700-0b69720a-037f-4169-9d40-a6273e65a41c.png">
+
+I made sure to include the libraries that will be used throughout this code in the very beginning.
+
+<img width="441" alt="Screen Shot 2021-07-16 at 12 17 31 PM" src="https://user-images.githubusercontent.com/43714174/125998729-2de42ae0-a7d8-45f5-b181-012bcd6e3e6c.png">
+
+The line of code that says the library's name before the function display is used to call which dimensions of this display that I would be using. In this case, I want to have the ability to use the entire screen. So by having the dimensions of (128, 64), this grants me that access. Below the deserialization code, you can see code that is meant to print out the temperature onto the display. 
 
 <img width="255" alt="Screen Shot 2021-07-16 at 12 19 32 PM" src="https://user-images.githubusercontent.com/43714174/125998343-e63b9027-1e11-43c0-9199-2f8c8c013520.png">
 
