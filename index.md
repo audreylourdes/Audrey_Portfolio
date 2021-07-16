@@ -28,7 +28,7 @@ My second milestone was displaying the temperature of my city on the OLED screen
   </div>
 </html>
 
-Now that all the correct pins are connected, I needed to install the required libraries. I then downloaded Adafruit SSD1306 and Adafruit GFX, which will control the OLED display through the ESP32. However, Adafruit SSD1306 was not the correct library needed, so instead, I downloaded a different library, the Adafruit SH110X. This library allowed me to display both words and images onto the OLED screen. I then began to add to my code from my last milestone. 
+Now that all the correct pins are connected, I needed to install the required libraries. I then downloaded Adafruit SSD1306 and Adafruit GFX, which will control the OLED display through the ESP32. These libraries allowed me to display both words and images onto the OLED screen. I then began to add to my code from my last milestone. 
 
 ```arduino
 #include <SPI.h>
@@ -57,7 +57,7 @@ display.println(temp);
 display.display();
 ```
 
-The first line of this section is dedicated to printing the temperature data to the serial port. The following two lines are there to set the color and size of what will be displayed. The following line then sets the location of where the data will be printed. Finally, the display function then calls for the temperature to be displayed on the screen. Compared to the last milestone, this milestone I encountered more difficult challenges. First up is that my OLED display was not functioning correctly and appeared to be broken. Another challenge was that I could not find a working library for this specific display. The final libraries that I ended up using were the Adafruit SH110X and Adafruit GFX.
+The first line of this section is dedicated to printing the temperature data to the serial port. The following two lines are there to set the color and size of what will be displayed. The following line then sets the location of where the data will be printed. Finally, the display function then calls for the temperature to be displayed on the screen. Compared to the last milestone, this milestone I encountered more difficult challenges. First up is that my OLED display was not functioning correctly and appeared to be broken. Another challenge was that I could not find a working library for my first OLED screen. But after being sent a another one as a replacement for my broken one, all the original libraries that I was supposed to download began to work for me.
 
 [![Third Milestone](https://res.cloudinary.com/marcomontalbano/image/upload/v1612574014/video_to_markdown/images/youtube--y3VAmNlER5Y-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=y3VAmNlER5Y&feature=emb_logo "Second Milestone"){:target="_blank" rel="noopener"}
 # First Milestone
