@@ -60,7 +60,8 @@ display.display();
 
 The first line of this section is dedicated to printing the temperature data to the serial port. The following two lines are there to set the color and size of what will be displayed. The following line then sets the location of where the data will be printed. Finally, the display function then calls for the temperature to be displayed on the screen. Compared to the last milestone, this milestone I encountered more difficult challenges. First up is that my OLED display was not functioning correctly and appeared to be broken. Another challenge was that I could not find a working library for my first OLED screen. But after being sent a another one as a replacement for my broken one, all the original libraries that I was supposed to download began to work for me.
 
-[![Third Milestone](https://res.cloudinary.com/marcomontalbano/image/upload/v1612574014/video_to_markdown/images/youtube--y3VAmNlER5Y-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=y3VAmNlER5Y&feature=emb_logo "Second Milestone"){:target="_blank" rel="noopener"}
+[![Second Milestone](https://res.cloudinary.com/marcomontalbano/image/upload/v1627071600/video_to_markdown/images/youtube--ePh5iCi0VoU-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=ePh5iCi0VoU "Second Milestone")
+
 # First Milestone
   
 
