@@ -6,7 +6,7 @@ This project is focused on creating an IoT Weather Indicator. By using an API, I
 |:--:|:--:|:--:|:--:|
 | Audrey L | Mission San Jose High School | Electrical Engineering | Incoming Junior
 
-[!Demonstration](https://media.giphy.com/media/pwbU8MVhFVo4ZnTFBi/giphy.gif)]
+[!Demonstration](https://media.giphy.com/media/pwbU8MVhFVo4ZnTFBi/giphy.gif "Demonstration")]
   
 # Final Milestone
 My final milestone is the increased reliability and accuracy of my robot. I ameliorated the sagging and fixed the reliability of the finger. As discussed in my second milestone, the arm sags because of weight. I put in a block of wood at the base to hold up the upper arm; this has reverberating positive effects throughout the arm. I also realized that the forearm was getting disconnected from the elbow servo’s horn because of the weight stress on the joint. Now, I make sure to constantly tighten the screws at that joint. 
