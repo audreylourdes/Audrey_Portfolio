@@ -78,11 +78,13 @@ long getDistance() {
    long duration, inches, cm;
 ``
 This ping is set off by a high pulse or microseconds of either two or more seconds. However, before initiating a high pulse, it is essential to give a short, low pulse to guarantee a smooth high pulse. And that is why I wrote some digitalWrite functions, beginning at low then high and writing digitalMicroseconds functions that go from 2 to 10.
+arduino ``
    digitalWrite(pingPin, LOW);
    delayMicroseconds(2);
    digitalWrite(pingPin, HIGH);
    delayMicroseconds(10);
    digitalWrite(pingPin, LOW);
+``
 I then declared the variable of duration to pulseIn, which has the role of reading a pulse. This variable will then be included in the inches variable to calculate the proper distance within microseconds.  
 arduino ``
  duration = pulseIn(echoPin, HIGH);
