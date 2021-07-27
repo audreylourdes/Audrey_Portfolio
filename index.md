@@ -9,7 +9,108 @@ This project is focused on creating an IoT Weather Indicator. By using an API, I
 <iframe src="https://giphy.com/embed/pwbU8MVhFVo4ZnTFBi" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/pwbU8MVhFVo4ZnTFBi">via GIPHY</a></p>
   
 # Final Milestone
-My final milestone is the increased reliability and accuracy of my robot. I ameliorated the sagging and fixed the reliability of the finger. As discussed in my second milestone, the arm sags because of weight. I put in a block of wood at the base to hold up the upper arm; this has reverberating positive effects throughout the arm. I also realized that the forearm was getting disconnected from the elbow servo’s horn because of the weight stress on the joint. Now, I make sure to constantly tighten the screws at that joint. 
+My third milestone was connecting my ultrasonic sensor to my ESP32, functioning correctly, and adding a description about the weather onto the OLED display. An ultrasonic sensor sends a ping that will then listen for an echo that comes back to calculate the distance measured in microseconds. The first step was finding an example code (https://www.tutorialspoint.com/arduino/arduino_ultrasonic_sensor.htm), that would display in the serial monitor the correct distance between the sensor and the nearest object that it was facing. By having this example code, I understood how to deconstruct it to fit the main code I worked on in the past two milestones. So up first, I called the const int function in order for my ESP32 to know which pins the ultrasonic sensor is connected to.
+Arduino ``
+const int pingPin = 27; 
+const int echoPin = 26;
+``
+Then I created an equation to return to me how many inches my sensor is away from the nearest object using a long function that can store the number value information. 
+Arduino ``
+long microsecondsToInches(long microseconds) {
+   return microseconds / 74 / 2;
+}
+``
+I created a new void variable called getWeather. My original code that was previously in void loop in my last milestone is now placed in void getWeather. This will make the process of rerunning my code easier by just calling getWeather in the updated void loop.
+Arduino ``
+void getWeather() {
+  if ((WiFi.status() == WL_CONNECTED)) { //Check the current connection status
+
+    HTTPClient http;
+  http.begin("https://api.openweathermap.org/data/2.5/weather?q=94539,US&appid=5de7158aa8adf3b343e6be6e8feb2a19"); //Specify the URL
+    int httpCode = http.GET();
+
+    if (httpCode > 0) { //Check for the returning code
+
+      String payload = http.getString();
+      DynamicJsonDocument doc(1024);
+      deserializeJson(doc, payload);
+      String mainstring = doc["main"];
+      DynamicJsonDocument main(1024);
+      deserializeJson(main, mainstring);
+      double temp = main["temp"];
+      temp = (temp - 273.15) * 9 / 5 + 32;
+      String weatherarraystring = doc["weather"];
+      DynamicJsonDocument weatherarray(1024);
+      deserializeJson(weatherarray, weatherarraystring);
+      String weatherstring = weatherarray[0];
+      DynamicJsonDocument weather(1024);
+      deserializeJson(weather, weatherstring);
+      String description = weather["main"];
+      String icon = weather["icon"];
+      Serial.println(httpCode);
+      
+      Serial.println(temp);
+      display.setTextSize(1);
+      display.setTextColor(SSD1306_WHITE);
+      display.setCursor(50, 0);
+      display.println(temp);
+      display.display();
+
+      Serial.println(description);
+      display.setTextSize(1);
+      display.setTextColor(SSD1306_WHITE);
+      display.setCursor(50, 30);
+      display.println(description);
+      display.display();
+    }
+
+    else {
+      Serial.println("Error on HTTP request");
+    }
+
+    http.end(); //Free the resources
+  }
+}
+``
+Later on, I used the long function again, but in this case it was so it stored the numbers of the distance into a variable. Below the first line of this long function is another long function. However, this long function establishes the variables for the duration of the ping.
+Arduino ``
+long getDistance() { 
+   long duration, inches, cm;
+``
+This ping is set off by a high pulse or microseconds of either two or more seconds. However, before initiating a high pulse, it is essential to give a short, low pulse to guarantee a smooth high pulse. And that is why I wrote some digitalWrite functions, beginning at low then high and writing digitalMicroseconds functions that go from 2 to 10.
+   digitalWrite(pingPin, LOW);
+   delayMicroseconds(2);
+   digitalWrite(pingPin, HIGH);
+   delayMicroseconds(10);
+   digitalWrite(pingPin, LOW);
+I then declared the variable of duration to pulseIn, which has the role of reading a pulse. This variable will then be included in the inches variable to calculate the proper distance within microseconds.  
+arduino ``
+ duration = pulseIn(echoPin, HIGH);
+   inches = microsecondsToInches(duration);
+``
+By using Serial.print, the correct inches will display in the serial monitor in the unit “in” every 1/10 of a second by using a return function.
+arduino ``
+   Serial.print(inches);
+   Serial.print("in");
+   Serial.println();
+   delay(100);
+   return inches;
+``
+I then included in the void loop an if statement that will only run if there is an object within 7 inches to the sensor. If so, the screen will clear with the display.clear function and upload a “loading screen” with the display.print function. However, the display.set functions are there to determine how the loading screen will appear on the OLED display. The loading screen is there for both looks and for the user to know when the updated weather is displayed. However, the loading screen appears for only a limited amount of time with the delay function. After this function, the screen clears again, and getWeather is rerun to have new and current data of my local weather.
+arduino ``
+void loop() {
+if (getDistance() <= 7) {
+  display.clearDisplay();
+  Serial.println("Loading...");
+  display.setTextSize(1);
+  display.setTextColor(SSD1306_WHITE);
+  display.setCursor(35, 30);
+  display.println("Loading...");
+  display.display();
+  delay(700);
+  display.clearDisplay();
+  getWeather();
+``
 
 [![Third Milestone](https://res.cloudinary.com/marcomontalbano/image/upload/v1627072048/video_to_markdown/images/youtube--3sLBpKAY7bs-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=3sLBpKAY7bs "Third Milestone")
 
